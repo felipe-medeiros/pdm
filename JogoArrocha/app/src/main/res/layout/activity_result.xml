@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/layoutResult"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.felipe.jogoarrocha.ResultActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tvResultTexto"
+                android:gravity="center"
+                android:textSize="32sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="teste"/>
+
+            <TextView
+                android:id="@+id/tvResultSeg"
+                android:gravity="center"
+                android:textSize="32sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="teste"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Pontuação:"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/tvResultScore"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="teste"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="32sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btResultVoltar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jogar de novo" />
+        </LinearLayout>
+</LinearLayout>

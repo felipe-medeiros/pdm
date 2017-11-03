@@ -1,5 +1,6 @@
 package com.example.felipe.jogoarrocha
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btChute: Button
     val random = Random()
     var segredo = random.nextInt(100)
+    var score = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,27 +26,36 @@ class MainActivity : AppCompatActivity() {
         this.tvMaior = findViewById(R.id.tvMainMaior)
         this.tvMenor = findViewById(R.id.tvMainMenor)
         this.etChute = findViewById(R.id.etMainChute)
+
         this.btChute = findViewById(R.id.btMainChute)
-        this.btChute.setOnClickListener({verifica(etChute)})
+        this.btChute.setOnClickListener({onClick(it)})
     }
 
-    fun verifica(view: View,menor: Int=2,maior: Int=99): Int{
-        var intchute = etChute.text as Int
-        if (intchute == segredo)
-            return -1
-        else if (intchute > maior || intchute < menor)
-            return -1
-        else if ((maior - menor) == 2)
-            return 1
-        else if (intchute < maior && intchute > menor){
+    fun onClick(view: View){
+        val maior = tvMaior.text.toString().toInt()
+        val menor = tvMenor.text.toString().toInt()
+        val intchute = etChute.text.toString().toInt()
+        val strsegredo = segredo.toString()
+
+        val it = Intent(this, ResultActivity::class.java)
+
+        if (intchute >= maior || intchute <= menor || intchute == segredo) {
+            it.putExtra("resultado","Perdeu!")
+            it.putExtra("segredo",strsegredo)
+            it.putExtra("score",score.toString())
+            startActivity(it)
+        }else if ((intchute - menor) == 2 || (maior - intchute) == 2) {
+            it.putExtra("resultado", "Ganhou!")
+            it.putExtra("segredo",strsegredo)
+            it.putExtra("score",score.toString())
+            startActivity(it)
+        }else if (intchute < maior && intchute > menor){
+            score -= 10
             if (intchute > segredo){
-                tvMaior.text = intchute as String
-                return 0
+                tvMaior.text = intchute.toString()
             }else if (intchute < segredo){
-                tvMenor.text = intchute as String
-                return 0
+                tvMenor.text = intchute.toString()
             }
         }
-        return -1
     }
 }
