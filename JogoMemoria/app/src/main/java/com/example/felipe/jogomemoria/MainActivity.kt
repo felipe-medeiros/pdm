@@ -4,7 +4,9 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
 import com.example.felipe.jogomemoria.R.drawable.*
@@ -13,9 +15,9 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var ltMain: LinearLayout
-    lateinit var ibMain: ImageButton
+    lateinit var ibMain: ImageView
     lateinit var ltParams: LayoutParams
-    lateinit var ibVer: ImageButton
+    lateinit var ibVer: Button
     var rand: Random = Random()
     var imgs = intArrayOf(rato,burro,ovelha,vaca,peru,pardal,tubarao,esquilo,
             rato,burro,ovelha,vaca,peru,pardal,tubarao,esquilo)
@@ -37,9 +39,9 @@ class MainActivity : AppCompatActivity() {
                 ltParams.setMargins(2,2,2,2)
                 layout2.layoutParams = ltParams
                 layout.addView(layout2)
-                layout2.setBackgroundColor(Color.BLACK)
+                layout2.setBackgroundColor(Color.DKGRAY)
 
-                ibMain = ImageButton(this)
+                ibMain = ImageView(this)
                 ibMain.layoutParams = ltParams
                 ibMain.setBackgroundResource(imgs[4*i+j])
                 ibMain.visibility = View.VISIBLE
@@ -50,19 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClick(view: View) {
-        var bt = view as ImageButton
-//        if (ibVer.visibility == View.VISIBLE) {
-//            bt.visibility = View.VISIBLE
-//            if (bt.background == ibVer.background) {
-                bt.visibility = View.INVISIBLE
-//                ibVer.visibility = View.VISIBLE
-//            } else {
-//                bt.visibility = View.INVISIBLE
-//                ibVer.visibility = View.INVISIBLE
-//            }
-//        } else {
-//            bt.visibility = View.VISIBLE
-//            ibVer = bt
-//        }
+        var bt = view as ImageView
+        bt.visibility = View.VISIBLE
     }
 }
