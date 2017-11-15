@@ -1,6 +1,5 @@
 package com.example.felipe.execamera
 
-import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +9,7 @@ import android.widget.Button
 class MainActivity : AppCompatActivity() {
 
     lateinit var btMain: Button
+    var foto = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +18,21 @@ class MainActivity : AppCompatActivity() {
         btMain = findViewById(R.id.btMain)
         btMain.setOnClickListener({
             val it = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(it)
+            startActivityForResult(it, foto)
 
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == foto){
+            val img = data?.extras
+            val it = Intent (Intent.ACTION_SEND)
+            it.type = "image/*"
+            it.putExtra(Intent.EXTRA_STREAM, img)
+            startActivity(it)
+        }
+
     }
 }
