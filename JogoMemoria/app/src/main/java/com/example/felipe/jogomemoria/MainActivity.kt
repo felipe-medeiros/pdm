@@ -57,18 +57,17 @@ class MainActivity : AppCompatActivity() {
         if(idaux == -1) {
             idaux = bt.id
             bt.setBackgroundResource(imgs[randArray[idaux]])
+            bt.isClickable = false
         }else{
             val bt2 = findViewById<ImageView>(idaux)
-            if (randArray[idaux] == randArray[bt.id]) {
-                bt.setBackgroundResource(imgs[randArray[bt.id]])
-                bt2.setBackgroundResource(imgs[randArray[idaux]])
-                bt.isClickable = false
-                bt2.isClickable = false
-            }else{
-                bt.setBackgroundResource(imgs[randArray[bt.id]])
-                bt2.setBackgroundResource(imgs[randArray[idaux]])
+            bt.isClickable = false
+            bt.setBackgroundResource(imgs[randArray[idaux]])
+            if (randArray[idaux] != randArray[bt.id]) {
+                Thread.sleep(500)
                 bt.setBackgroundResource(R.color.primary_material_dark)
                 bt2.setBackgroundResource(R.color.primary_material_dark)
+                bt.isClickable = true
+                bt2.isClickable = true
             }
             idaux = -1
         }
