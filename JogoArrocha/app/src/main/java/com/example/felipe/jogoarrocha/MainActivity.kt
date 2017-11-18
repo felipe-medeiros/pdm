@@ -49,13 +49,14 @@ class MainActivity : AppCompatActivity() {
             it.putExtra("segredo",strsegredo)
             it.putExtra("score",score.toString())
             startActivity(it)
-        }else if (intchute < maior && intchute > menor){
-            score -= 10
+        }else if (intchute in menor+1 until maior){
+            score -= 5
             if (intchute > segredo){
                 tvMaior.text = intchute.toString()
             }else if (intchute < segredo){
                 tvMenor.text = intchute.toString()
             }
+            etChute.text.clear()
         }
     }
 }
