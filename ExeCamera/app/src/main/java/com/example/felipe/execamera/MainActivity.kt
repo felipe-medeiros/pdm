@@ -1,6 +1,8 @@
 package com.example.felipe.execamera
 
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -19,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         btMain.setOnClickListener({
             val it = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(it, foto)
-
         })
     }
 
@@ -27,12 +28,12 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == foto){
+            val it = Intent ()
             val img = data?.extras
-            val it = Intent (Intent.ACTION_SEND)
+            it.action = Intent.ACTION_SEND
             it.type = "image/*"
             it.putExtra(Intent.EXTRA_STREAM, img)
             startActivity(it)
         }
-
     }
 }
