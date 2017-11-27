@@ -1,6 +1,7 @@
 package com.example.felipe.meuslugares
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build
@@ -25,6 +26,7 @@ class CarregaActivity : AppCompatActivity() {
     lateinit var bmFoto: Bitmap
     val REQUEST_PHOTO = 1
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ServiceCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,14 +48,15 @@ class CarregaActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun salvar(view: View){
         val it = Intent(this, MainActivity::class.java)
-        it.putExtra("Nome", this.etNome.text)
-        it.putExtra("Desc", this.etDesc.text)
+        it.putExtra("Nome", this.etNome.text.toString())
+        it.putExtra("Desc", this.etDesc.text.toString())
         this.ivFoto.buildDrawingCache()
         this.bmFoto = this.ivFoto.drawingCache
         it.putExtra("Foto", this.bmFoto)
         val datahora = LocalDateTime.now()
-        it.putExtra("Hora", datahora)
-        startActivity(it)
+        it.putExtra("Hora", datahora.toString())
+        setResult(Activity.RESULT_OK, it)
+        finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
