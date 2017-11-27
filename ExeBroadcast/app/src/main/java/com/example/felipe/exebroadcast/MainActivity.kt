@@ -35,9 +35,7 @@ class MainActivity : AppCompatActivity() {
             var msg = ""
             if(Intent.ACTION_AIRPLANE_MODE_CHANGED == intent?.action){
                 msg = "Modo avião trocado."
-            }else{
-                msg = "Nada feito."
-            }
+            }else{}
             this@MainActivity.tvMain.text = msg
         }
     }
