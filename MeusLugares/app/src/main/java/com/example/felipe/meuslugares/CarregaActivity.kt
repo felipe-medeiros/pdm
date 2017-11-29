@@ -62,7 +62,7 @@ class CarregaActivity : AppCompatActivity() {
         it.putExtra("Lugar", Lugar(
                 this.etNome.text.toString(),
                 this.etDesc.text.toString(),
-                this.ivFoto.drawable as BitmapDrawable).bitmap,
+                (this.ivFoto.drawable as BitmapDrawable).bitmap,
                 this.local,
                 Date()
         ))
