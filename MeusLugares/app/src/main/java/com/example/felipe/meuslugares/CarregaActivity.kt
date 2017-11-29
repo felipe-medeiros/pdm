@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -61,7 +62,7 @@ class CarregaActivity : AppCompatActivity() {
         it.putExtra("Lugar", Lugar(
                 this.etNome.text.toString(),
                 this.etDesc.text.toString(),
-                this.bmFoto,
+                this.ivFoto.drawable as BitmapDrawable).bitmap,
                 this.local,
                 Date()
         ))
