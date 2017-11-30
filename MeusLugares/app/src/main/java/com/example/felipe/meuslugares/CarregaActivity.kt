@@ -18,6 +18,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import java.time.Instant
 import java.util.*
 
 class CarregaActivity : AppCompatActivity() {
@@ -27,7 +28,6 @@ class CarregaActivity : AppCompatActivity() {
     lateinit var btFoto: Button
     lateinit var btSalvar: Button
     lateinit var ivFoto: ImageView
-    lateinit var bmFoto: Bitmap
     lateinit var gpsManager: LocationManager
     lateinit var gpsListener: LocationListener
     var local: Location? = null
@@ -64,7 +64,7 @@ class CarregaActivity : AppCompatActivity() {
                 this.etDesc.text.toString(),
                 (this.ivFoto.drawable as BitmapDrawable).bitmap,
                 this.local,
-                Date()
+                Date().toString()
         ))
         setResult(Activity.RESULT_OK, it)
         finish()

@@ -11,27 +11,27 @@
     <TextView
         android:id="@+id/tvNome"
         android:hint="Nome"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvDesc"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:hint="Descrição"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvHora"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:hint="Hora"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvGPS"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:hint="GPS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -10,14 +10,14 @@ import java.util.*
  * Created by felipe on 29/11/17.
  */
 
-class Lugar(var nome: String, var desc: String, var foto: Bitmap, var local: Location?, var data: Date): Parcelable {
+class Lugar(var nome: String, var desc: String, var foto: Bitmap, var local: Location?, var data: String?): Parcelable {
 
     constructor(source: Parcel): this(
         source.readString(),
         source.readString(),
         source.readParcelable<Bitmap>(Bitmap::class.java.classLoader),
         source.readParcelable<Location>(Location::class.java.classLoader),
-        source.readSerializable() as Date
+        source.readString()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -25,6 +25,7 @@ class Lugar(var nome: String, var desc: String, var foto: Bitmap, var local: Loc
         parcel.writeString(desc)
         parcel.writeParcelable(foto, flags)
         parcel.writeParcelable(local, flags)
+        parcel.writeString(data)
     }
 
     override fun describeContents(): Int {
